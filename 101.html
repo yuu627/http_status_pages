@@ -1,15 +1,201 @@
 <!doctype html>
 <html lang="ja">
-<meta charset="utf-8">
-<title>101 Switching Protocols</title>
-<style>
-body{text-align:center;font-family:sans-serif;margin:0}
-h1{background:#333;color:white;margin:0;padding:1em}
-.dummy{font-size:128px}
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>101 Switching Protocols</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(145, 220, 255, 0.16), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(185, 140, 255, 0.12), transparent 32%),
+        linear-gradient(180deg, #07111f 0%, #0b1c30 45%, #132942 100%);
+      color: #eef6ff;
+      font-family: "DotGothic16", "Yu Gothic", sans-serif;
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    .wrap {
+      width: min(90%, 820px);
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 48px;
+      align-items: center;
+      padding: 40px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(72px, 14vw, 140px);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+      color: #9fd4ff;
+    }
+
+    h2 {
+      margin: 14px 0 20px;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 400;
+      line-height: 1.2;
+      color: #eef6ff;
+    }
+
+    p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.9;
+      color: #d9e9f8;
+    }
+
+    .small {
+      margin-top: 18px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      color: #90abc5;
+      text-transform: uppercase;
+    }
+
+    .jellybox {
+      display: grid;
+      place-items: center;
+      position: relative;
+      min-height: 220px;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(180, 220, 255, 0.18);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .b1 {
+      width: 18px;
+      height: 18px;
+      top: 10px;
+      right: 30px;
+    }
+
+    .b2 {
+      width: 10px;
+      height: 10px;
+      top: 50px;
+      right: 70px;
+      animation-delay: .8s;
+    }
+
+    .b3 {
+      width: 14px;
+      height: 14px;
+      top: 90px;
+      right: 20px;
+      animation-delay: 1.6s;
+    }
+
+    .wave {
+      position: absolute;
+      width: 210px;
+      height: 70px;
+      border: 1px solid rgba(159, 212, 255, 0.24);
+      border-radius: 50%;
+      transform: rotate(-14deg);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    img {
+      width: 180px;
+      height: auto;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+      filter:
+        drop-shadow(0 12px 18px rgba(0,0,0,0.35))
+        drop-shadow(0 0 18px rgba(159,212,255,0.22));
+      animation: swim 4.8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateY(-10px);
+        opacity: 1;
+      }
+    }
+
+    @keyframes swim {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: rotate(-14deg) scale(1);
+        opacity: .45;
+      }
+      50% {
+        transform: rotate(-14deg) scale(1.08);
+        opacity: .8;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .jellybox {
+        order: -1;
+      }
+    }
+  </style>
+</head>
 <body>
-<h1>101 Switching Protocols</h1>
-<div class="dummy">🔄</div>
-<p>通信のやり方、今から切り替えるで。</p>
+  <main class="wrap">
+    <section>
+      <h1>101</h1>
+      <h2>Switching Protocols</h2>
+      <p>
+        通信の方法を切り替えます。<br>
+        クラゲみたいに、少しだけ別の波長へ漂っていきます。
+      </p>
+      <div class="small">HTTP STATUS PAGE / 101</div>
+    </section>
+
+    <section class="jellybox" aria-hidden="true">
+      <div class="wave"></div>
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+      <img
+  alt="dot jellyfish"
+  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA3UlEQVR4nMVTMQ6CQBAcjS+gltYE+ID3Bzq6a+EPVFRU/IGajo4/4ANQEltNqHmBFmZxb+8gdk5C9tjszM7t5oB/YycTx9P5tUV43i8Gx/ghctH0TnKplSWyd5HjAIiDL5HOJMxd7sFA5G78fETsRrOG4yBt8mJ+BoDb42pdy3BAd9xCm2duARoMdXHF0I+MWssBAKSzBzVMaPMMapiQzh5KrZa8xOoaqaOMcpWWgy2UWllbsASoOx9WqRVCP0JS1ZboqoOi6Z1bkTnnDJKqRptnS5TgW/jpMckHxPEGdUFvWnrqRzcAAAAASUVORK5CYII=">
+    </section>
+  </main>
 </body>
 </html>
